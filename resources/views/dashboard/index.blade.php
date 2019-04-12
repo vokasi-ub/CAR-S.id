@@ -1,5 +1,4 @@
 
-@section('content')
 
 <!DOCTYPE html>
 <html>
@@ -57,11 +56,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+       Data Pesanan
+        <small>CAR-S.id</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="home"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>
@@ -69,7 +68,21 @@
     <!-- Main content -->
     <section class="content">
       <div class="box-body table-responsive no-padding">
-          <table style="margin-left:5%; padding:15px; cellpadding:15px;" border="3px Solid blue">
+
+          <div class="box-footer"> 
+          
+          <form action="searchpesanan" method="get" class="sidebar-form">
+            <div class="input-group">
+            <input type="text" name="cari" class="form-control" placeholder="Search..." value="{{ old('cari') }}">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+          <button type="submit" class="btn btn-info pull-right"><a href="tambah"> Insert </a></button>      
+
+                <table class="table table-stripped">
             <tr>
                 <td> Durasi </td>
                 <td> Tanggal Pesan </td>
@@ -92,6 +105,9 @@
             </tr>
             @endforeach
           </table>
+          </div><br><br>
+
+          
       </div>
 
     </section>

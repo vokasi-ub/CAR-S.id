@@ -17,10 +17,70 @@ Route::get('/', function () {
 
 Route::get('home', 'CategoryController@index');
 
-Route::get('/edit/edit/{category_id}','CategoryController@edit');
+Route::get('/edit/edit/{id_pesanan}','CategoryController@edit');
 
 Route::post('/datakategori/update','CategoryController@update');
 
-Route::get('/hapus/destroy/{category_id}','CategoryController@destroy');
+Route::get('/hapus/destroy/{id_pesanan}','CategoryController@destroy');
 
-Route::get('query', 'CategoryController@search');
+Route::get('searchpesanan', 'CategoryController@search');
+
+Route::get('tambah','CategoryController@create');
+
+Route::post('/pesanan/tambah','CategoryController@pesanan');
+
+
+
+Route::get('/merk', 'MerkController@index');
+
+Route::get('/edit/merk/{id_merek}','MerkController@edit');
+
+Route::post('/merk/update','MerkController@update');
+
+Route::get('tambahmerk','MerkController@create');
+
+Route::post('/merk/tambah','MerkController@merk');
+
+Route::get('/hapus/merk/{id_merek}','MerkController@destroy');
+
+Route::get('searchmerk', 'MerkController@search');
+
+
+
+Route::get('mobil', 'MobilController@index');
+
+Route::get('/edit/mobil/{id_mobil}','MobilController@edit');
+
+Route::post('/mobil/update','MobilController@update');
+
+Route::get('tambahmobil','MobilController@create');
+
+Route::post('/mobil/tambah','MobilController@mobil');
+
+Route::get('/hapus/mobil/{id_mobil}','MobilController@destroy');
+
+Route::get('searchmobil', 'MobilController@search');
+
+
+
+Route::get('penyewaan', 'PenyewaanController@index');
+
+Route::get('/edit/penyewa/{id_penyewaan}','PenyewaanController@edit');
+
+Route::post('/penyewa/update','PenyewaanController@update');
+
+Route::get('tambahpenyewa','PenyewaanController@create');
+
+Route::post('/penyewa/tambah','PenyewaanController@penyewa');
+
+Route::get('/hapus/penyewa/{id_penyewaan}','PenyewaanController@destroy');
+
+Route::get('searchpenyewa', 'PenyewaanController@search');
+
+
+Route::get('form', 'LoginController@index');
+
+Route::post('/login/post','LoginController@ploginpost');
+
+Route::get('logout', 'LoginController@logout');
+

@@ -15,14 +15,13 @@ class CategoryController extends Controller
     }
 
     public function search(Request $request)
-
     {
 
-        $query = $request->input('cari');
+        $cari = $request->cari;
 
-        $hasil = category::where('category_name', 'LIKE', '%' . $query . '%')->paginate(10);
+        $categories = DB::table('pesanan')->where('durasi', 'LIKE', '%' . $cari . '%')->paginate(10);
 
-        return view('master.result', compact('hasil', 'query'));
+        return view('dashboard.index',['categories' => $categories]);
 
     }
 
@@ -40,9 +39,30 @@ class CategoryController extends Controller
 
     {
 
-        //
+        $categories = Category::all();
+        return view('dashboard.master.tambah', compact('categories'));
+
 
     }
+
+    public function pesanan(Request $request)
+
+    {
+
+        // insert data ke table pegawai
+	    DB::table('pesanan')->insert([
+		    'id_pesanan' => $request->id_pesanan,
+            'durasi' => $request->durasi,
+            'tgl_pesan' => $request->tgl_pesan,
+            'tgl_kembali' => $request->tgl_kembali,
+            'id_mobil' => $request->id_mobil,
+            'id_penyewa' => $request->id_penyewa
+	    ]);
+	    // alihkan halaman ke halaman pegawai
+	    return redirect('home');
+
+    }
+
 
     /**
 
@@ -56,55 +76,6 @@ class CategoryController extends Controller
 
      */
 
-    public function store(Request $request)
-
-    {
-
-        DB::table('table_category')->insert([
-
-            'category_name' => $request->nama_kategori,
-
-            'remarks' => $request->remarks
-
-        ]);
-
-
-
-        return redirect('/kategori2');
-
-    }
-
-    /**
-
-     * Display the specified resource.
-
-     *
-
-     * @param  int  $id
-
-     * @return \Illuminate\Http\Response
-
-     */
-
-    public function show($id)
-
-    {
-
-        //
-
-    }
-
-    /**
-
-     * Show the form for editing the specified resource.
-
-     *
-
-     * @param  int  $id
-
-     * @return \Illuminate\Http\Response
-
-     */
 
     public function edit($id_pesanan)
     {
